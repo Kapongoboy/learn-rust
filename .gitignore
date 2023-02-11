@@ -6,3 +6,11 @@ rust-doc/guessing_game/**/*.rs.bk
 
 rust-doc/guessing_game/*.pdb
 
+# variables
+rust-doc/variables/debug/
+rust-doc/variables/target/
+
+rust-doc/variables/**/*.rs.bk
+
+rust-doc/variables/*.pdb
+
