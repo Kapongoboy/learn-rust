@@ -1,7 +1,8 @@
-*/*/debug/
-*/*/target/
+# guessing game
+rust-doc/guessing_game/debug/
+rust-doc/guessing_game/target/
 
-*/*/**/*.rs.bk
+rust-doc/guessing_game/**/*.rs.bk
 
-*/*/*.pdb
+rust-doc/guessing_game/*.pdb
 
