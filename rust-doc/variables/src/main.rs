@@ -122,10 +122,47 @@ fn fahrenheit_to_celsius() {
     }
 }
 
+fn init_fibonnaci() -> u32 {
+    let mut user_length = String::new();
+    io::stdin()
+        .read_line(&mut user_length)
+        .expect("could not read line");
+    let user_length: u32 = user_length
+        .trim()
+        .parse()
+        .expect("Please enter a positive real number");
+    user_length
+}
+
+fn fibonacci(length: u32) {
+    if length == 0 {
+        println!("Please enter a number greater than 0")
+    } else if length == 1 {
+        println!("{}",1);
+    } else {
+        let mut vec: Vec<u32> = vec![1, 1];
+        for i in 2..length as usize{
+            vec.push(&vec[i-1] + &vec[i-2]);
+        }
+        println!("Your fibonacci sequence is: ");
+        for x in &vec {
+            println!("{x}");
+        }
+    }
+}
+
+fn implement_fibonacci() {
+    println!("Please enter a length for your fibonacci sequence");
+    let fibonnacci_length = init_fibonnaci();
+    fibonacci(fibonnacci_length);
+
+}
+
 fn main() {
     // variables_and_mutability();
     // data_types();
-    fahrenheit_to_celsius()
+    // fahrenheit_to_celsius()
+    implement_fibonacci();
 }
 
 
