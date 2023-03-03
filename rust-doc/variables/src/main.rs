@@ -1,4 +1,4 @@
-use std::io;
+use std::{io, fs};
 
 fn variables_and_mutability() {
     let x = 5;
@@ -158,11 +158,19 @@ fn implement_fibonacci() {
 
 }
 
+fn read_file(){
+    let file_path = "lyrics.txt";
+    let contents = fs::read_to_string(file_path)
+        .expect("Should have been able to read the file");
+    println!("With text:\n{contents}");
+}
+
 fn main() {
     // variables_and_mutability();
     // data_types();
     // fahrenheit_to_celsius()
-    implement_fibonacci();
+    // implement_fibonacci();
+    read_file();
 }
 
 
