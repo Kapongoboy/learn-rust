@@ -81,9 +81,51 @@ fn data_types() {
 
 }
 
+fn temp_calculator(unit:String) {
+    let opposite = if unit == "fahrenheit" {
+        "celsius" 
+    } else {
+        "fahrenheit" 
+    };
+    println!("Please enter a temperature in {opposite}: ");
+    let mut temperature = String::new();
+    io::stdin()
+        .read_line(&mut temperature)
+        .expect("Failed to read line");
+    let temperature: f64 = temperature
+        .trim()
+        .parse()
+        .expect("Please enter a number");
+    let converted_temp: f64 = if unit == "fahrenheit" {
+        (temperature*1.8)+32.0
+    } else {
+        (temperature-32.0)/1.8
+    };
+    let converted_temp = converted_temp.round();
+    println!("The temperature in {opposite} is: {converted_temp}");
+
+}
+
+fn fahrenheit_to_celsius() {
+    println!("Would you like to convert to celsius or fahrenheit? (c/f) ");
+    let mut user_choice = String::new();
+    io::stdin()
+        .read_line(&mut user_choice)
+        .expect("Failed to read line");
+    if user_choice.trim() == "f" {
+        temp_calculator("fahrenheit".to_string());
+    } else if user_choice.trim() == "c" {
+        temp_calculator("celsius".to_string());
+    } else {
+        println!("Please enter either 'c' or 'f'");
+        fahrenheit_to_celsius()
+    }
+}
+
 fn main() {
-    variables_and_mutability();
-    data_types();
+    // variables_and_mutability();
+    // data_types();
+    fahrenheit_to_celsius()
 }
 
 
