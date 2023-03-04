@@ -1,4 +1,6 @@
-use std::{io, fs};
+use std::io::{self, BufRead};
+use std::fs::File;
+use std::path::Path;
 
 fn variables_and_mutability() {
     let x = 5;
@@ -158,11 +160,25 @@ fn implement_fibonacci() {
 
 }
 
+fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
+where P: AsRef<Path>, {
+    let file = File::open(filename)?;
+    Ok(io::BufReader::new(file).lines())
+}
+
 fn read_file(){
     let file_path = "lyrics.txt";
-    let contents = fs::read_to_string(file_path)
-        .expect("Should have been able to read the file");
-    println!("With text:\n{contents}");
+    // let contents = fs::read_to_string(file_path)
+    //     .expect("Should have been able to read the file");
+    // println!("With text:\n{:?}", contents);
+    // println!("{}", contents.len());
+    if let Ok(lines) = read_lines(file_path) {
+        for line in lines {
+            if let Ok(ip) = line {
+                println!("{}", ip); 
+            }
+        }
+    }
 }
 
 fn main() {
